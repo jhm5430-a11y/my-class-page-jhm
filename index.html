@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>기술 교과 성적 분석 대시보드</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Noto+Sans+KR:wght@300;400;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
+</head>
+<body>
+    <div class="glass-bg"></div>
+    <div class="container">
+        <header>
+            <h1>기술 교과 성적 분석 <span class="accent">대시보드</span></h1>
+            <p class="subtitle">Tech Education Score Analytics Dashboard</p>
+        </header>
+
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-icon">👥</div>
+                <div class="stat-info">
+                    <span class="stat-label">전체 학생 수</span>
+                    <span id="total-students" class="stat-value">-</span>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">📊</div>
+                <div class="stat-info">
+                    <span class="stat-label">전체 평균 점수</span>
+                    <span id="avg-total" class="stat-value">-</span>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">🏆</div>
+                <div class="stat-info">
+                    <span class="stat-label">최고 점수</span>
+                    <span id="max-score" class="stat-value">-</span>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">📈</div>
+                <div class="stat-info">
+                    <span class="stat-label">최저 점수</span>
+                    <span id="min-score" class="stat-value">-</span>
+                </div>
+            </div>
+        </div>
+
+        <main class="dashboard-grid">
+            <div class="chart-container large">
+                <h2>학급별 평균 성적 비교</h2>
+                <canvas id="classAvgChart"></canvas>
+            </div>
+            
+            <div class="chart-container">
+                <h2>전체 성적 분포 (히스토그램)</h2>
+                <canvas id="distributionChart"></canvas>
+            </div>
+
+            <div class="chart-container">
+                <h2>평가 항목별 기여도</h2>
+                <canvas id="categoryAvgChart"></canvas>
+            </div>
+
+            <div class="chart-container full-width">
+                <h2>학생별 상세 성적 조회</h2>
+                <div class="filters">
+                    <select id="class-filter">
+                        <option value="all">전체 학급</option>
+                    </select>
+                </div>
+                <div class="table-wrapper">
+                    <table id="scores-table">
+                        <thead>
+                            <tr>
+                                <th>학급</th>
+                                <th>번호</th>
+                                <th>기말고사</th>
+                                <th>수행1</th>
+                                <th>수행2</th>
+                                <th>수행3</th>
+                                <th>총점</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Data will be populated here -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>&copy; 2026 Tech Education Dashboard. Designed for Educational Analytics.</p>
+        </footer>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
